@@ -131,11 +131,12 @@ li:hover {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 12px;
 	margin: 25px;
 }
 
-#b-All, #b-Obj, #b-Apt, #b-HR {
+#b-All, #b-Obj, #b-Apt, #b-Ven {
+	font-size: 1.1em;
 	font-family: 'Syne';
 	color: #1D6154;
 	background-color: white;
