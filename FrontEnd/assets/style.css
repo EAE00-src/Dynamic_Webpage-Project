@@ -131,17 +131,24 @@ li:hover {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 12px;
+	gap: 15px;
 	margin: 25px;
 }
 
-#b-All, #b-Obj, #b-Apt, #b-Ven {
+#b-All, #b-Obj, #b-Apt, #b-Ven{
 	font-size: 1.1em;
 	font-family: 'Syne';
 	color: #1D6154;
 	background-color: white;
 	border-radius: 18px;
-	border: #1D6154 1px solid;
+	border: #1D6154 1.5px solid;
+	padding: 8px;
+}
+
+#b-All:hover, #b-Obj:hover, #b-Apt:hover, #b-Ven:hover{
+	background-color: #1D6154;
+	color: white;
+	transition: 0.7s;
 }
 
 

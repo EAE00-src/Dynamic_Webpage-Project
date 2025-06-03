@@ -51,8 +51,7 @@ async function getWorks() {
             console.error(error.message);
 		  }
 	};
-
-
+	
 getCateg();
 getWorks();
 
@@ -71,8 +70,11 @@ const filterAll = document.getElementById('b-All');
 const filterObj = document.getElementById('b-Obj');
 const filterApt = document.getElementById('b-Apt');
 const filterVen = document.getElementById('b-Ven');
+//Figure variables
 let gallery = document.getElementsByClassName('gallery');
 let objGallery = document.getElementsByClassName('obj');
+let aptGallery = document.getElementsByClassName('apt');
+let venGallery = document.getElementsByClassName('venue');
 
 //Event listeners (filters)
 filterAll.addEventListener('click', () =>{
@@ -86,8 +88,8 @@ filterAll.addEventListener('click', () =>{
 });
 
 //objects filter
-filterObj.addEventListener('click', () =>{
-	getWorks().then(obj =>{
+filterObj.addEventListener('click', async () =>{
+	await getWorks().then(obj =>{
 		let results = [];
 		for (let prop of obj){
 			if(prop.category.name === 'Objects'){
@@ -97,12 +99,13 @@ filterObj.addEventListener('click', () =>{
 	
 		};
 				console.log(results);
+				
 		});
 	});
 
 //apartments filter
-filterApt.addEventListener('click', () =>{
-	getWorks().then(apartments => {
+filterApt.addEventListener('click', async() =>{
+	await getWorks().then(apartments => {
 		let aptResults = [];
 		for(let apartment of apartments){
 			if(apartment.category.name === 'Apartments'){
@@ -115,15 +118,16 @@ filterApt.addEventListener('click', () =>{
 });
 
 //hotels & restaurants filter
-filterVen.addEventListener('click', () =>{
-	getWorks().then(restaurants => {
-		let hrResults = [];
-		for(let prop of restaurants){
+filterVen.addEventListener('click', async () =>{
+	await getWorks().then(venues => {
+		let venResults = [];
+		for(let prop of venues){
 			if(prop.category.name === 'Hotels & restaurants'){
-				hrResults.push(prop);
+				venResults.push(prop);
 				
 			}
 		};
-		console.log(hrResults);
+
+		console.log(venResults[0].title);
 	});
 });
