@@ -70,15 +70,15 @@ const filterAll = document.getElementById('b-All');
 const filterObj = document.getElementById('b-Obj');
 const filterApt = document.getElementById('b-Apt');
 const filterVen = document.getElementById('b-Ven');
-//Figure variables
-let gallery = document.getElementsByClassName('gallery');
-let objGallery = document.getElementsByClassName('obj');
-let aptGallery = document.getElementsByClassName('apt');
-let venGallery = document.getElementsByClassName('venue');
+//Gallery variable
+let galleryContainer = document.querySelector('.gallery');
+
+
+
 
 //Event listeners (filters)
-filterAll.addEventListener('click', () =>{
-	getWorks().then(works =>{
+filterAll.addEventListener('click', async () =>{
+	await getWorks().then(works =>{
 		let allResults = [];
 		for (let all of works){
 			console.log(all);
@@ -95,11 +95,19 @@ filterObj.addEventListener('click', async () =>{
 			if(prop.category.name === 'Objects'){
 				console.log(prop);
 				results.push(prop);
+
+				const objectSelect = galleryContainer.querySelector('.obj');
+				const aptSelect = galleryContainer.querySelectorAll('.apt');
+				const venueSelect = galleryContainer.querySelectorAll('.venue');
+
+				objectSelect.style.display = 'block'
+				aptSelect.forEach(apt => apt.style.display = 'none');
+				venueSelect.forEach(venSelect=> venSelect.style.display = 'none');
 			}
 	
 		};
 				console.log(results);
-				
+
 		});
 	});
 
@@ -130,4 +138,20 @@ filterVen.addEventListener('click', async () =>{
 
 		console.log(venResults[0].title);
 	});
+});
+
+
+
+//login variables
+const adminEmail = document.getElementById('login-email');
+const adminPassword = document.getElementById('password');
+const submitInfo = document.getElementById('submit-login');
+
+//Event Listener for Login page
+adminEmail.addEventListener('click', ($event) => {
+	if($event.target.value !==  sophie.bluel@test.tld){
+		submitInfo.setAttribute('disabled');
+	} else{
+		
+	}
 });
