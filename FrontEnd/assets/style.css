@@ -126,6 +126,8 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+
+/***filters div***/
 .filters{
 	display: flex;
 	flex-direction: row;
@@ -134,6 +136,25 @@ li:hover {
 	gap: 15px;
 	margin: 25px;
 }
+
+/****filter buttons*****/
+#b-All, #b-Obj, #b-Apt, #b-Ven{
+	font-size: 1.1em;
+	font-family: 'Syne';
+	color: #1D6154;
+	background-color: white;
+	border-radius: 18px;
+	border: #1D6154 1.5px solid;
+	padding: 8px;
+}
+
+#b-All:hover, #b-Obj:hover, #b-Apt:hover, #b-Ven:hover{
+	background-color: #1D6154;
+	color: white;
+	transition: 0.7s;
+	cursor: pointer;
+}
+/**********/
 
 #contact-a, #projects-a, #contact-a:visited, #projects-a:visited{
 	text-decoration: none;
@@ -185,9 +206,29 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#login-section label{
-		margin: 2em 0 1em 0;
+.input-control.success input{
+	box-shadow: 0px 4px 14px rgba(9, 255, 0, 0.88);
 }
+
+.input-control.error input{
+	box-shadow: 0px 4px 14px rgba(255, 15, 15, 0.88);
+}
+
+.input-control.error{
+	color: rgb(255, 15, 15);
+	font-size: 1.2em;
+
+}
+
+#login-section label{
+	margin: 2em 0 1em 0;
+}
+
+#login-form div{
+	display: flex;
+	flex-direction: column;
+}
+
 
 #pw-forget{
 	text-decoration: underline;
@@ -196,25 +237,29 @@ li:hover {
 	color: black;
 }
 
+#submit-login{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+/***form validation & errors***/
+.error-msg{
+	display: none;
+	color: rgb(255, 15, 15);
+}
+
+
+
+
 /****/
 
-/****filter buttons*****/
-#b-All, #b-Obj, #b-Apt, #b-Ven{
-	font-size: 1.1em;
-	font-family: 'Syne';
-	color: #1D6154;
-	background-color: white;
-	border-radius: 18px;
-	border: #1D6154 1.5px solid;
-	padding: 8px;
-}
 
-#b-All:hover, #b-Obj:hover, #b-Apt:hover, #b-Ven:hover{
-	background-color: #1D6154;
-	color: white;
-	transition: 0.7s;
-}
-/**********/
 
 .gallery {
 	width: 100%;
@@ -230,7 +275,7 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;

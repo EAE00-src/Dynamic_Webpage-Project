@@ -1,5 +1,5 @@
 // api link: 'http://localhost:5678/api/'
-console.log("app.js")
+console.log("index.js")
 /*fetch('http://localhost:5678/api/categories')
     .then((response) => response.json())
     .then((data) => {
@@ -19,6 +19,7 @@ async function getCateg() {
 			}else{
 			
             const categData = await response.json();
+			console.log(categData);
 			return categData;
 			};
 	     }catch (error) {
@@ -33,7 +34,6 @@ async function getCateg() {
 }).catch(error => {
   console.error(error.message);
 });*/
-
 
 
 async function getWorks() {
@@ -56,7 +56,6 @@ getCateg();
 getWorks();
 
 
-
 /*getWorks().then(objects =>{
 	console.log(objects[4].category.id);
 }).catch(error =>{
@@ -71,7 +70,7 @@ const filterObj = document.getElementById('b-Obj');
 const filterApt = document.getElementById('b-Apt');
 const filterVen = document.getElementById('b-Ven');
 //Gallery variable
-let galleryContainer = document.querySelector('.gallery');
+let galleryContainer = document.querySelectorAll('.gallery');
 
 
 
@@ -83,7 +82,6 @@ filterAll.addEventListener('click', async () =>{
 		for (let all of works){
 			console.log(all);
 		};
-		
 	});
 });
 
@@ -91,6 +89,7 @@ filterAll.addEventListener('click', async () =>{
 filterObj.addEventListener('click', async () =>{
 	await getWorks().then(obj =>{
 		let results = [];
+
 		for (let prop of obj){
 			if(prop.category.name === 'Objects'){
 				console.log(prop);
@@ -100,14 +99,18 @@ filterObj.addEventListener('click', async () =>{
 				const aptSelect = galleryContainer.querySelectorAll('.apt');
 				const venueSelect = galleryContainer.querySelectorAll('.venue');
 
-				objectSelect.style.display = 'block'
+				objectSelect.style.display = 'inline-block';
 				aptSelect.forEach(apt => apt.style.display = 'none');
 				venueSelect.forEach(venSelect=> venSelect.style.display = 'none');
 			}
 	
 		};
 				console.log(results);
-
+				console.log(categResults);
+			//let 	
+			//for (let i; i < results.length; i++ ){
+			//for (let j = i; j < allCategories.length; j++){
+			//	if(results[i].category.name === allCategories[j].name)
 		});
 	});
 
@@ -115,6 +118,7 @@ filterObj.addEventListener('click', async () =>{
 filterApt.addEventListener('click', async() =>{
 	await getWorks().then(apartments => {
 		let aptResults = [];
+
 		for(let apartment of apartments){
 			if(apartment.category.name === 'Apartments'){
 				aptResults.push(apartment);
@@ -138,20 +142,4 @@ filterVen.addEventListener('click', async () =>{
 
 		console.log(venResults[0].title);
 	});
-});
-
-
-
-//login variables
-const adminEmail = document.getElementById('login-email');
-const adminPassword = document.getElementById('password');
-const submitInfo = document.getElementById('submit-login');
-
-//Event Listener for Login page
-adminEmail.addEventListener('click', ($event) => {
-	if($event.target.value !==  sophie.bluel@test.tld){
-		submitInfo.setAttribute('disabled');
-	} else{
-		
-	}
 });

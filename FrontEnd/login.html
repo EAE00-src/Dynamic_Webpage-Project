@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script defer src="assets/login.js"></script>
 </head>
 <body>
 <header>
@@ -25,11 +26,17 @@
 <main>
     <section id="login-section">
             <h2 id="login-head">Login</h2>
-            <form action="#" method="post">
-                <label for="login-email">Email</label>
-                <input type="text" name="login-email" id="login-email">
-                <label for="password">Password</label>
-                <input type="text" name="password" id="password">
+            <form action="#" method="post" id="login-form">
+				<div class="input-control">
+                	<label for="login-email">Email</label>
+                	<input required type="email" name="login-email" id="login-email">
+					<div class="error-msg"></div>
+				</div>
+				<div class="input-control">
+                	<label for="password">Password</label>
+                	<input required type="password" name="password" id="password">
+					<div class="error-msg"></div>
+				</div>
 				<input type="submit" value="Sign in" id="submit-login">
 				<a id="pw-forget" href="#" target="_blank">Forgot your password?</a>
             </form>
@@ -44,7 +51,8 @@
 	</nav>
 </footer>
 
+</body>
 
 
 
-<script src="assets/app.js"></script>
+
