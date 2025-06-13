@@ -75,6 +75,7 @@ loginForm.addEventListener('submit', event =>{
 	loginValidation();
     if(loginValidation()){
         alert('Login successful! Welcome Admin!');
+        window.location.href = 'admin.html';
     }else{
         event.preventDefault();
         return false;
