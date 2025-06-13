@@ -35,7 +35,7 @@ async function getCateg() {
   console.error(error.message);
 });*/
 
-
+//this js file should get repurposed for the modal window that will fetch images from the backend to put in the admin
 async function getWorks() {
 	const apiWorks = 'http://localhost:5678/api/works';
 		try {
@@ -70,76 +70,7 @@ const filterObj = document.getElementById('b-Obj');
 const filterApt = document.getElementById('b-Apt');
 const filterVen = document.getElementById('b-Ven');
 //Gallery variable
-let galleryContainer = document.querySelectorAll('.gallery');
+let galleryContainer = document.querySelector('.gallery');
 
 
 
-
-//Event listeners (filters)
-filterAll.addEventListener('click', async () =>{
-	await getWorks().then(works =>{
-		let allResults = [];
-		for (let all of works){
-			console.log(all);
-		};
-	});
-});
-
-//objects filter
-filterObj.addEventListener('click', async () =>{
-	await getWorks().then(obj =>{
-		let results = [];
-
-		for (let prop of obj){
-			if(prop.category.name === 'Objects'){
-				console.log(prop);
-				results.push(prop);
-
-				const objectSelect = galleryContainer.querySelector('.obj');
-				const aptSelect = galleryContainer.querySelectorAll('.apt');
-				const venueSelect = galleryContainer.querySelectorAll('.venue');
-
-				objectSelect.style.display = 'inline-block';
-				aptSelect.forEach(apt => apt.style.display = 'none');
-				venueSelect.forEach(venSelect=> venSelect.style.display = 'none');
-			}
-	
-		};
-				console.log(results);
-				console.log(categResults);
-			//let 	
-			//for (let i; i < results.length; i++ ){
-			//for (let j = i; j < allCategories.length; j++){
-			//	if(results[i].category.name === allCategories[j].name)
-		});
-	});
-
-//apartments filter
-filterApt.addEventListener('click', async() =>{
-	await getWorks().then(apartments => {
-		let aptResults = [];
-
-		for(let apartment of apartments){
-			if(apartment.category.name === 'Apartments'){
-				aptResults.push(apartment);
-				
-			}
-		};
-		console.log(aptResults);
-	});
-});
-
-//hotels & restaurants filter
-filterVen.addEventListener('click', async () =>{
-	await getWorks().then(venues => {
-		let venResults = [];
-		for(let prop of venues){
-			if(prop.category.name === 'Hotels & restaurants'){
-				venResults.push(prop);
-				
-			}
-		};
-
-		console.log(venResults[0].title);
-	});
-});

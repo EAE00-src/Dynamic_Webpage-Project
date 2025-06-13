@@ -1,3 +1,4 @@
+console.log('loginEmail.js');
 //login variables
 const loginForm = document.getElementById('login-form');
 const loginEmail = document.getElementById('login-email');
@@ -36,6 +37,7 @@ loginForm.addEventListener('submit', event =>{
 		const loginEmailValue = loginEmail.value.trim();
 		const loginPasswordValue = loginPassword.value.trim();
 
+		//checks if fields are blank
 		if(loginEmailValue === '' && loginPasswordValue === ''){
 			setError(loginPassword, 'Both email & password are required!');
             setError(loginEmail, 'Both email & password are required!');
@@ -43,9 +45,7 @@ loginForm.addEventListener('submit', event =>{
 			return false;
 		}
 
-		
-		
-
+		//checks if the respective fields match with the correct password & email
 		if(loginEmailValue === adminEmail && loginPasswordValue === adminPW){
 			setSuccess(loginEmail);
 			setSuccess(loginPassword);
@@ -73,6 +73,7 @@ loginForm.addEventListener('submit', event =>{
 		
 	};
 	loginValidation();
+	//checks if loginValidation is true or false (correct credentials inputted). If true then the user moves onto the admin page. If false then they get an error
     if(loginValidation()){
         alert('Login successful! Welcome Admin!');
         window.location.href = 'admin.html';
