@@ -53,19 +53,19 @@ loginForm.addEventListener('submit', event =>{
 
 		}else if(loginEmailValue === adminEmail && loginPasswordValue !== adminPW){
 			setSuccess(loginEmail);
-            setError(loginPassword, 'Incorrect password, login attempt failed!')
+            setError(loginPassword, 'Incorrect password, login attempt failed! Please try again.')
 			event.preventDefault();
 			return false;
 
 		}else if(loginPasswordValue === adminPW && loginEmailValue !== adminEmail){
-			setError(loginEmail, 'Incorrect email, login attempt failed!');
+			setError(loginEmail, 'Incorrect email, login attempt failed! Please try again.');
             setSuccess(loginPassword);
 			event.preventDefault();
 			return false;
 
 		}else{
-			setError(loginEmail, 'Incorrect email, login failed!')
-            setError(loginPassword,'Incorrect password, login failed!')
+			setError(loginEmail, 'Incorrect email, login failed! Please try again.')
+            setError(loginPassword,'Incorrect password, login failed! Please try again.')
 			event.preventDefault();
 			return false;
 		};

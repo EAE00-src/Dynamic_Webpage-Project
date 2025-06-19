@@ -36,7 +36,7 @@ async function getCateg() {
 });*/
 
 //this js file should get repurposed for the modal window that will fetch images from the backend to put in the admin
-async function getWorks() {
+async function getWorks(){
 	const apiWorks = 'http://localhost:5678/api/works';
 		try {
 		const response = await fetch(apiWorks);
@@ -55,22 +55,20 @@ async function getWorks() {
 getCateg();
 getWorks();
 
-
-/*getWorks().then(objects =>{
-	console.log(objects[4].category.id);
+//getting backend jobs to replace the gallery prior to filtering
+getWorks().then(gallery =>{
+	//`<figure><img src="${galleryplace.category.imgUrl}"</figure>`
+	console.log(gallery[4].category.id);
 }).catch(error =>{
 	console.error(error);
-});*/
+});
 
+ let galleryWorks = [];
+ async function loadWorks() {
+	categories = await getWorks();
+ }
+ console.log(galleryWorks.category.name);
 
-//button variables
-const filters = document.getElementsByClassName('filters');
-const filterAll = document.getElementById('b-All');
-const filterObj = document.getElementById('b-Obj');
-const filterApt = document.getElementById('b-Apt');
-const filterVen = document.getElementById('b-Ven');
-//Gallery variable
-let galleryContainer = document.querySelector('.gallery');
 
 
 

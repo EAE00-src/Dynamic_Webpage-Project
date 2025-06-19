@@ -1,3 +1,5 @@
+console.log('index.js');
+updateGallery();
 //button variables
 const filters = document.getElementsByClassName('filters');
 const filterAll = document.getElementById('b-All');
@@ -51,3 +53,35 @@ filterVen.addEventListener('click', () => {
 filterAll.addEventListener('click', () =>{
     showAll();
 });
+
+
+//Job retrieval from backEnd to pre-existing images
+async function getWorks(){
+	const apiWorks = 'http://localhost:5678/api/works';
+		try {
+		const response = await fetch(apiWorks);
+			if (!response.ok){
+				throw new Error(`Response status: ${response.status}`)
+			}
+			
+            const works = await response.json();
+            console.log(works);
+			return works;
+	     }catch (error) {
+            console.error(error.message);
+		  }
+	};
+
+async function updateGallery(){
+  const works = await getWorks();
+  
+  works.forEach((work, index) =>{
+    const figure = galleryContainer.children[index];
+    const img = figure.querySelector('img');
+    const figCaption = figure.querySelector('figcaption');
+
+    img.src = work.imageUrl;
+    img.alt = work.title;
+    figCaption.textContent = work.title;
+  });
+};
