@@ -265,6 +265,8 @@ li:hover {
 	color: black;
 	text-decoration: none;
 }
+
+/***Modal***/
 #open-modal{
 	color: black;
   	background-color: white;
@@ -272,9 +274,186 @@ li:hover {
   	cursor: pointer;
 }
 #edit-square{
-	height: 16px;
+	height: 18px;
 }
-/***Modal***/
+
+#modal-window{
+	display: flex;
+	flex-direction: column;
+	width: 26.7rem;
+	height: 33.5rem;
+	border-radius: 16px;
+	position: absolute;
+	padding: 20px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+}
+#modal-window::backdrop{
+	background: grey;
+	opacity: 0.2;
+}
+/*header*/
+#modal-header{
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+#modal-header h3{
+	font-size: 2em;
+	font-weight: 700;
+}
+/**/
+.modal-1{
+	padding-left: 25px;
+}
+/*Gallery*/
+.modal-gallery{
+	width: 80%;
+	display: grid;
+	grid-template-columns: repeat(5, 20%);
+	grid-column-gap: 5px;
+	grid-row-gap: 20px;
+	padding: 15px;
+}
+
+.modal-gallery img{
+	width: 100%;
+	max-height: 6.5em;
+	position: relative;
+}
+
+#exit-button{
+	background-color: white;
+	border: none;
+	cursor: pointer;
+}
+#exit-modal{
+	display: flex;
+	justify-content: flex-end;
+}
+
+figure .trash-icon{
+	width: 1.2em;
+	height: 17px;
+	border-radius: 2px;
+	z-index: 1;
+	background-color: black;
+	position: absolute;
+	cursor: pointer;
+}
+figure .delete-button{
+	border: none;
+	background-color: none;
+}
+
+hr{
+	width: 70%;
+	color: grey;
+	opacity: 30%;
+}
+#add-div{
+	display: flex;
+	justify-content: center;
+}
+#add-button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+	border: none;
+	padding: 10px;
+}
+
+/****Modal 2 (Add Photo)****/
+.modal-2{
+	display: none;
+	flex-direction: column;
+	height: 80%;
+}
+#exit-modal2{
+	display: flex;
+	justify-content: space-between;
+}
+#back-button{
+	border: none;
+	background-color: white;
+	cursor: pointer;
+}
+
+#photo-form div{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+#photo-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #E8F1F6;
+	width: 26.25em;
+	height: 10.56em;
+	border-radius: 3px;
+	padding-top: 20px;
+}
+#photo-icon{
+	width: 76px;
+	height: 76px;
+}
+#file-label{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #CBD6DC;
+	margin : 2em auto;
+	width: 9em;
+	text-align: center;
+	border-radius: 50px;
+	border: none;
+	padding: 10px;
+}
+input[type="file"]{
+	display: none;
+}
+
+#photo-form input{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#photo-form select{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	background-color: white;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.photo-info{
+	margin: 2em 0 1em 0;
+	font-size: 1.2em;
+}
+#submit-photo{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #CBD6DC;
+	margin : 2em auto;
+	width: 9em;
+	text-align: center;
+	border-radius: 60px;
+	border: none;
+	padding: 10px;
+}
+#submit-photo.confirm{
+	background-color: #1D6154;
+	transition: 0.7s;
+}
 
 /****/
 

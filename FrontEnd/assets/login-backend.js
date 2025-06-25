@@ -1,16 +1,72 @@
-console.log('loginEmail.js');
+console.log('login-backend.js');
 //login variables
 const loginForm = document.getElementById('login-form');
 const loginEmail = document.getElementById('login-email');
 const loginPassword = document.getElementById('password');
 const submitInfo = document.getElementById('submit-login');
 
+//Event Listener for Login page Backend
+loginForm.addEventListener('submit', e =>{
+    e.preventDefault();
+    const loginEmailValue = loginEmail.value.trim();
+	const loginPasswordValue = loginPassword.value.trim();
+    const apiLogin = 'http://localhost:5678/api/users/login';
+
+    const setError = (element, message) => {
+		const inputControl = element.parentElement;
+		const errorDisplay = inputControl.querySelector('.error-msg');
+
+		errorDisplay.innerText = message;
+		inputControl.classList.add('error');
+		inputControl.classList.remove('success');
+	};
+
+	/*const setSuccess = element => {
+		const inputControl = element.parentElement;
+		const errorDisplay = inputControl.querySelector('.error-msg');
+
+		errorDisplay.innerText = '';
+		inputControl.classList.add('success');
+		inputControl.classList.remove('error');
+	};*/
+
+
+    async function sendLogin(){
+		//fetch request that sends the values of the email and password to the backend and receives the login token
+        await fetch(apiLogin, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'email': `${loginEmailValue}`, 'password': `${loginPasswordValue}`})
+        }).then(response => response.json())
+        .then(data =>{
+			console.log(data);
+            if(data.token === undefined || data.token === null || data.token === ''){
+                setError(loginEmail, 'Invalid email or password');
+                setError(loginPassword, 'Invalid email or password');
+                console.log('Login Failed');
+				alert(`Error: ${data.message}`)
+            }else{
+				console.log('Login Successful');
+                alert('Login successful! Welcome Admin!');
+				localStorage.setItem('login-token', data.token);
+				window.location.href = 'index.html';
+                }
+            }).catch(error =>{
+                console.error('Error:', error);
+                setError(loginEmail, 'An error has occured please try again!');
+                setError(loginPassword, 'An error has occurred please try again!');
+            });
+        };
+        sendLogin();
+});
+
 
 
 //Event Listener for Login page
 
-
-loginForm.addEventListener('submit', event =>{
+/*loginForm.addEventListener('submit', event =>{
 	event.preventDefault();
 
 	const setError = (element, message) => {
@@ -82,4 +138,4 @@ loginForm.addEventListener('submit', event =>{
         return false;
     }
 
-});
+});*/
