@@ -56,18 +56,29 @@ getCateg();
 getWorks();
 
 //getting backend jobs to replace the gallery prior to filtering
-getWorks().then(gallery =>{
-	//`<figure><img src="${galleryplace.category.imgUrl}"</figure>`
-	console.log(gallery[4].category.id);
-}).catch(error =>{
-	console.error(error);
-});
+async function updateGallery(){
+  const works = await getWorks();
+  let galleryContainer = document.querySelector('.gallery');
+  
+  works.forEach((work, index) =>{
+    const galleryFigure = galleryContainer.children[index];
+	const figure = document.createElement('figure')
+    const img = document.createElement('img');
+    const figCaption = document.createElement('figcaption');
 
- let galleryWorks = [];
- async function loadWorks() {
-	categories = await getWorks();
- }
- console.log(galleryWorks.category.name);
+    img.src = work.imageUrl;
+    img.alt = work.title;
+    figCaption.textContent = work.title;
+    galleryFigure.id = work.id
+    galleryFigure.className = work.category.name
+
+	figure.appendChild(img);
+	figure.appendChild(figCaption);
+	galleryContainer.appendChild(figure);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', updateGallery);
 
 
 

@@ -33,18 +33,31 @@ async function getWorks() {
             console.error(error.message);
 		  }
 	};
+
 //Update gallery content
 async function updateGallery(){
   const works = await getWorks();
+  //const galleryContainer = document.querySelector('.gallery');
+  const modalGallery = document.querySelector('.modal-gallery');
   
   works.forEach((work, index) =>{
-    const figure = galleryContainer.children[index];
-    const img = figure.querySelector('img');
-    const figCaption = figure.querySelector('figcaption');
+    //const figure = galleryContainer.children[index];
+    //const img = figure.querySelector('img');
+    //const figCaption = figure.querySelector('figcaption');
 
-    img.src = work.imageUrl;
-    img.alt = work.title;
-    figCaption.textContent = work.title;
+	const modalFigure = modalGallery.children[index];
+	const modalImg = modalFigure.querySelector('[class="modal-img"]')
+
+    //img.src = work.imageUrl;
+    //img.alt = work.title;
+    //figCaption.textContent = work.title;
+	//figure.id = work.id
+    //figure.className = work.category.name
+
+	modalFigure.id = work.id;
+	modalFigure.className = work.category.name
+	modalImg.src = work.imageUrl;
+	modalImg.alt = work.title;
   });
 };
 
@@ -91,9 +104,29 @@ async function populateCategorySelection() {
 	});
 }
 
-async function workSubmission(){
-	const formData = new FormData(photoForm)
-}
+/*async function workSubmission(){
+	const apiWorks = 'http://localhost:5678/api/works';
+	try{
+		const response = await fetch(apiWorks, {
+			method: 'POST',
+			headers: {
+				'Content-Type':'application/json'
+			},
+			body: JSON.stringify({'id': `0`,
+				'title': `string`,
+				'imageUrl': `string`,
+				'categoryId': `string`,
+				'userId': `0`
+			})
+		}).then(response => response.json())
+		.then(data =>{
+			console.log(data)
+		});
+	}catch (error){
+		console.error(`error.message`);
+	}
+	
+}*/
 
 //This event listener loads the categories for the modal when the page is open
 document.addEventListener('DOMContentLoaded', populateCategorySelection);

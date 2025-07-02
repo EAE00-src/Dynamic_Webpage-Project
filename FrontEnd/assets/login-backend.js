@@ -42,18 +42,25 @@ loginForm.addEventListener('submit', e =>{
         }).then(response => response.json())
         .then(data =>{
 			console.log(data);
-            if(data.token === undefined || data.token === null || data.token === ''){
+			//This 'if' checks if the password entry is blank
+			if(loginPasswordValue === ''){
+				setError(loginPassword, 'Password is required!');
+				e.preventDefault();
+			}else if(data.token === undefined || data.token === null || data.token === ''){
+				//this 'if' checks if there isn't a valid token that is sent back from the form submission
                 setError(loginEmail, 'Invalid email or password');
                 setError(loginPassword, 'Invalid email or password');
                 console.log('Login Failed');
 				alert(`Error: ${data.message}`)
             }else{
+				//if the token is valid/exists then the user will be logged in and will store the token
 				console.log('Login Successful');
                 alert('Login successful! Welcome Admin!');
 				localStorage.setItem('login-token', data.token);
 				window.location.href = 'index.html';
                 }
             }).catch(error =>{
+				//this error is related to if the fetch fails to send the values to the backend
                 console.error('Error:', error);
                 setError(loginEmail, 'An error has occured please try again!');
                 setError(loginPassword, 'An error has occurred please try again!');
@@ -64,78 +71,6 @@ loginForm.addEventListener('submit', e =>{
 
 
 
-//Event Listener for Login page
 
-/*loginForm.addEventListener('submit', event =>{
-	event.preventDefault();
-
-	const setError = (element, message) => {
-		const inputControl = element.parentElement;
-		const errorDisplay = inputControl.querySelector('.error-msg');
-
-		errorDisplay.innerText = message;
-		inputControl.classList.add('error');
-		inputControl.classList.remove('success');
-	};
-
-	const setSuccess = element => {
-		const inputControl = element.parentElement;
-		const errorDisplay = inputControl.querySelector('.error-msg');
-
-		errorDisplay.innerText = '';
-		inputControl.classList.add('success');
-		inputControl.classList.remove('error');
-	};
-
-	function loginValidation(){
-		const adminEmail = 'sophie.bluel@test.tld';
-		const adminPW = 'S0phie';
-		const loginEmailValue = loginEmail.value.trim();
-		const loginPasswordValue = loginPassword.value.trim();
-
-		//checks if fields are blank
-		if(loginEmailValue === '' && loginPasswordValue === ''){
-			setError(loginPassword, 'Both email & password are required!');
-            setError(loginEmail, 'Both email & password are required!');
-			event.preventDefault();
-			return false;
-		}
-
-		//checks if the respective fields match with the correct password & email
-		if(loginEmailValue === adminEmail && loginPasswordValue === adminPW){
-			setSuccess(loginEmail);
-			setSuccess(loginPassword);
-			return true;
-
-		}else if(loginEmailValue === adminEmail && loginPasswordValue !== adminPW){
-			setSuccess(loginEmail);
-            setError(loginPassword, 'Incorrect password, login attempt failed! Please try again.')
-			event.preventDefault();
-			return false;
-
-		}else if(loginPasswordValue === adminPW && loginEmailValue !== adminEmail){
-			setError(loginEmail, 'Incorrect email, login attempt failed! Please try again.');
-            setSuccess(loginPassword);
-			event.preventDefault();
-			return false;
-
-		}else{
-			setError(loginEmail, 'Incorrect email, login failed! Please try again.')
-            setError(loginPassword,'Incorrect password, login failed! Please try again.')
-			event.preventDefault();
-			return false;
-		};
-
-		
-	};
-	loginValidation();
-	//checks if loginValidation is true or false (correct credentials inputted). If true then the user moves onto the admin page. If false then they get an error
-    if(loginValidation()){
-        alert('Login successful! Welcome Admin!');
-        window.location.href = 'admin.html';
-    }else{
-        event.preventDefault();
-        return false;
-    }
-
-});*/
+//const adminEmail = 'sophie.bluel@test.tld';
+//const adminPW = 'S0phie';

@@ -1,5 +1,4 @@
 console.log('index.js');
-updateGallery();
 //button variables
 const filters = document.getElementsByClassName('filters');
 const filterAll = document.getElementById('b-All');
@@ -12,45 +11,53 @@ let galleryContainer = document.querySelector('.gallery');
 
 //function for hiding all images/figures
 function hideAll() {
+  //this query selects every figure within the div of '.gallery' and hides every 'item'
   document.querySelectorAll('.gallery figure').forEach(item => {
     item.style.display = 'none';
   });
 }
 //function for revealing all images at once
 function showAll(){
+  //this query selects every figure within the div of '.gallery' and displays every 'item'
     document.querySelectorAll('.gallery figure').forEach(item =>{
         item.style.display = 'inline-block';
     });
 };
 
 
-//Function to show elements by class
+//Function to show elements by class names
+//(updated to take class names from category names from backend)
 function showByClass(className) {
-  document.querySelectorAll(`.gallery figure.${className}`).forEach(item => {
+  //this query accesses the parent element (.gallery) and and the children (figure) to specifically access the various class names
+  document.querySelectorAll(`.gallery figure[class="${className}"]`).forEach(item => {
     item.style.display = 'inline-block';
   });
 }
 
 //Event listener for "Objects" button
 filterObj.addEventListener('click', () => {
+  //all figures are hidden before only displaying photos of the class of 'Objects'
   hideAll();
-  showByClass('obj');
+  showByClass('Objects');
 });
 
 //Event listener for "Apartments" button
 filterApt.addEventListener('click', () => {
+  //all figures are hidden before only displaying photos of the class of 'Apartments'
   hideAll();
-  showByClass('apt');
+  showByClass('Apartments');
 });
 
-//Event listener for "Venues" button
+//Event listener for "Hotels & Restaurants" button
 filterVen.addEventListener('click', () => {
+  //all figures are hidden before only displaying photos of the class of 'Hotels & restaurants'
   hideAll();
-  showByClass('venue');
+  showByClass('Hotels & restaurants');
 });
 
 //Event Listener for "All" button
 filterAll.addEventListener('click', () =>{
+  //shows restores the display properties of all elements
     showAll();
 });
 
@@ -70,18 +77,36 @@ async function getWorks(){
 	     }catch (error) {
             console.error(error.message);
 		  }
-	};
+};
 
-async function updateGallery(){
+//function for populating the gallery with jobs from Backend
+async function populateGallery(){
+  //storing the retrieved data from getWorks inside of works
   const works = await getWorks();
   
-  works.forEach((work, index) =>{
-    const figure = galleryContainer.children[index];
-    const img = figure.querySelector('img');
-    const figCaption = figure.querySelector('figcaption');
+  //this forEach function runs through every indexed
+  works.forEach((work) =>{
+    //these constants hold the newly created HTML elements (figures, images, and captions)
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    const figCaption = document.createElement('figcaption');
 
+    //adds the image src and alt description from backend
     img.src = work.imageUrl;
     img.alt = work.title;
+    //adds image titles from backend to all figures
     figCaption.textContent = work.title;
+    //adds category names and id numbers from backend
+    figure.className = work.category.name
+    figure.id = work.id
+
+
+    //incorporates the images and titles into the figures...
+    //...before finally adding them into the gallery container
+    figure.appendChild(img);
+	  figure.appendChild(figCaption);
+    galleryContainer.appendChild(figure);
   });
 };
+
+document.addEventListener('DOMContentLoaded', populateGallery);

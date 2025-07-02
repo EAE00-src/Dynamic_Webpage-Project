@@ -281,10 +281,11 @@ li:hover {
 	display: flex;
 	flex-direction: column;
 	width: 26.7rem;
-	height: 33.5rem;
+	height: 36.5rem;
 	border-radius: 16px;
 	position: absolute;
-	padding: 20px;
+	padding-left: 5em;
+	padding-right: 5em;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	border: none;
 }
@@ -294,10 +295,10 @@ li:hover {
 }
 /*header*/
 #modal-header{
-	margin: 20px;
+	margin: 10px;
 	display: flex;
 	justify-content: center;
-	padding: 10px;
+	padding: 5px;
 }
 #modal-header h3{
 	font-size: 2em;
@@ -305,16 +306,20 @@ li:hover {
 }
 /**/
 .modal-1{
-	padding-left: 25px;
+	height: 100%;
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 /*Gallery*/
 .modal-gallery{
-	width: 80%;
+	width: 85%;
 	display: grid;
 	grid-template-columns: repeat(5, 20%);
 	grid-column-gap: 5px;
 	grid-row-gap: 20px;
 	padding: 15px;
+	height: auto;
 }
 
 .modal-gallery img{
@@ -331,6 +336,16 @@ li:hover {
 #exit-modal{
 	display: flex;
 	justify-content: flex-end;
+	position: relative;
+	left: 1.5em;
+}
+
+.modal-gallery figure{
+	position: relative;
+}
+
+.modal-img{
+	position: absolute;
 }
 
 figure .trash-icon{
@@ -340,56 +355,83 @@ figure .trash-icon{
 	z-index: 1;
 	background-color: black;
 	position: absolute;
+	right: 5px;
+	top: 14px;
 	cursor: pointer;
 }
-figure .delete-button{
+.delete-button{
 	border: none;
-	background-color: none;
+	background-color: white;
 }
 
 hr{
 	width: 70%;
 	color: grey;
 	opacity: 30%;
+	margin-bottom: 15px;
 }
 #add-div{
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	height: 2.44em;
+	position: relative;
+  	top: 10px;
 }
 #add-button{
 	font-family: 'Syne';
 	font-weight: 700;
+	font-size: 1.1rem;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
+	margin: 1em;
+	width: 12rem;
 	text-align: center;
 	border-radius: 60px;
 	border: none;
-	padding: 10px;
+	padding: 12px;
+	cursor: pointer;
 }
 
 /****Modal 2 (Add Photo)****/
 .modal-2{
 	display: none;
 	flex-direction: column;
-	height: 80%;
+	height: 100%;
+	width: 100%;
 }
 #exit-modal2{
 	display: flex;
 	justify-content: space-between;
 }
+
+#exit-modal2 #exit-button{
+	position: relative;
+	left: 2.4em;
+}
 #back-button{
 	border: none;
 	background-color: white;
 	cursor: pointer;
+	position: relative;
+	right: 2.4em;
+}
+
+#add-photo{
+	width: 100%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
 }
 
 #photo-form div{
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	justify-content: center;
+	gap: 5px;
+	padding-bottom: 10px;
 }
+
 #photo-container{
 	display: flex;
 	flex-direction: column;
@@ -400,6 +442,8 @@ hr{
 	height: 10.56em;
 	border-radius: 3px;
 	padding-top: 20px;
+	position: relative;
+	left: 30px;
 }
 #photo-icon{
 	width: 76px;
@@ -410,19 +454,21 @@ hr{
 	font-weight: 700;
 	color: white;
 	background-color: #CBD6DC;
-	margin : 2em auto;
+	margin : 0.5em auto;
 	width: 9em;
 	text-align: center;
 	border-radius: 50px;
 	border: none;
 	padding: 10px;
+	cursor: pointer;
 }
 input[type="file"]{
 	display: none;
 }
 
 #photo-form input{
-	height: 50px;
+	width: 100%;
+	height: 3.1em;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -435,20 +481,21 @@ input[type="file"]{
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 .photo-info{
-	margin: 2em 0 1em 0;
+	margin: 1em 0 1em 0;
 	font-size: 1.2em;
 }
 #submit-photo{
 	font-family: 'Syne';
 	font-weight: 700;
+	font-size: 1.1rem;
 	color: white;
 	background-color: #CBD6DC;
-	margin : 2em auto;
+	margin : 0.5em auto;
 	width: 9em;
 	text-align: center;
 	border-radius: 60px;
 	border: none;
-	padding: 10px;
+	padding: 12px;
 }
 #submit-photo.confirm{
 	background-color: #1D6154;
