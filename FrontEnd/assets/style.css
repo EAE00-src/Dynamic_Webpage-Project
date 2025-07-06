@@ -58,6 +58,31 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+header a{
+	text-decoration: none;
+}
+#edit-mode{
+	display: flex;
+	visibility: collapse;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+	height: 3.69em;
+	background-color: black;
+	color: white;
+	gap: 5px;
+}
+#edit-squarewh{
+	height: 1.1em;
+	position: relative;
+	top: 15px;
+}
+#edit-mode p{
+	font-size: 1.1em;
+	position: relative;
+	top: 15px;
+}
 section {
 	margin: 50px 0
 }
@@ -249,7 +274,7 @@ li:hover {
 }
 /*******/
 
-/***Admin page***/
+/** post-login index adjustments**/
 #admin-projects{
 	display: flex;
   	flex-direction: row;
@@ -257,50 +282,102 @@ li:hover {
   	gap: 8px;
   	align-items: baseline;
 }
-#logout:hover{
+#logout-btn:hover{
 	color: #B1663C;
 	transition: 0.5s;
 }
-#logout{
+#logout-btn{
+	display: none;
 	color: black;
 	text-decoration: none;
+	border: none;
+	background-color: white;
+	font: inherit;
+	cursor: pointer;
+	position: relative;
+	right: 20px;
 }
 
-/***Modal***/
+/***Modal Window***/
 #open-modal{
+	display: none;
 	color: black;
   	background-color: white;
   	border: none;
   	cursor: pointer;
+	font-size: 1.1em;
 }
 #edit-square{
 	height: 18px;
+	position: relative;
+	right: 4px;
+	top: 2px;
 }
 
 #modal-window{
-	display: flex;
-	flex-direction: column;
-	width: 26.7rem;
+	position: fixed;
+	top: 6em;
+	width: 26rem;
 	height: 36.5rem;
 	border-radius: 16px;
-	position: absolute;
-	padding-left: 5em;
+	padding-left: 4em;
 	padding-right: 5em;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	border: none;
+	animation-name: pop;
+	animation-duration: 0.3s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	overflow: hidden;
 }
+@keyframes pop{
+	0%{
+		transform: scale(0);
+	}
+	25%{
+		transform: scale(.45);
+	}
+	50%{
+		transform: scale(.75);
+	}
+	75%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+/*@keyframes reversepop{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(1.2);
+	}
+	50%{
+		transform: scale(.75);
+	}
+	75%{
+		transform: scale(.45);
+	}
+	100%{
+		transform: scale(0);
+	}
+}*/
+
+
 #modal-window::backdrop{
-	background: grey;
-	opacity: 0.2;
+	background-color: grey;
+	opacity: 0.4;
 }
 /*header*/
-#modal-header{
+.modal-header{
 	margin: 10px;
 	display: flex;
 	justify-content: center;
 	padding: 5px;
 }
-#modal-header h3{
+.modal-header h3{
 	font-size: 2em;
 	font-weight: 700;
 }
@@ -313,7 +390,7 @@ li:hover {
 }
 /*Gallery*/
 .modal-gallery{
-	width: 85%;
+	width: 90%;
 	display: grid;
 	grid-template-columns: repeat(5, 20%);
 	grid-column-gap: 5px;
@@ -328,7 +405,14 @@ li:hover {
 	position: relative;
 }
 
-#exit-button{
+#exit-button1{
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	left: 1.2em;
+}
+#exit-button2{
 	background-color: white;
 	border: none;
 	cursor: pointer;
@@ -336,8 +420,6 @@ li:hover {
 #exit-modal{
 	display: flex;
 	justify-content: flex-end;
-	position: relative;
-	left: 1.5em;
 }
 
 .modal-gallery figure{
@@ -356,7 +438,7 @@ figure .trash-icon{
 	background-color: black;
 	position: absolute;
 	right: 5px;
-	top: 14px;
+	top: 18px;
 	cursor: pointer;
 }
 .delete-button{
@@ -405,7 +487,7 @@ hr{
 	justify-content: space-between;
 }
 
-#exit-modal2 #exit-button{
+#exit-modal2 #exit-button2{
 	position: relative;
 	left: 2.4em;
 }
@@ -500,6 +582,15 @@ input[type="file"]{
 #submit-photo.confirm{
 	background-color: #1D6154;
 	transition: 0.7s;
+	cursor: pointer;
+}
+#preview-image{
+	display: none;
+	object-fit: cover;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	bottom: 0.5px;
 }
 
 /****/

@@ -12,13 +12,18 @@
 	<script defer src="assets/index-V2.js"></script>
 </head>
 <body>
+	<div id="edit-mode">
+		<img src="./assets/icons/edit_square_wh.svg" id="edit-squarewh" alt="edit square icon (white)">
+		<p>Editing Mode</p>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Interior Designer</span></h1>
 	<nav>
 		<ul>
-			<li><a href="#portfolio" id="projects-a">projects</a></li>
-			<li><a href="#contact" id="contact-a">contact</a></li>
-			<li><a href="login.html" target="_parent" id="login">login</a></li>
+			<li><a href="#portfolio" id="projects-a">Projects</a></li>
+			<li><a href="#contact" id="contact-a">Contact</a></li>
+			<li><a href="login.html" target="_self" id="login">Login</a></li>
+			<li><button type="button" id="logout-btn">Logout</button></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,7 +41,67 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>My Projects</h2>
+		<div id="admin-projects">
+			<h2>My Projects</h2>
+        	<button type="button" id="open-modal">
+				<img src="./assets/icons/edits_quare.svg" id="edit-square" alt="edit icon">Edit</button>
+		</div>
+		<!--The Modal-->
+	<dialog id="modal-window">
+	<div class="modal-1">
+            <div id="exit-modal">
+                <button type="button" id="exit-button1"><img src="assets/icons/close_icon.svg" alt="close modal"></button>
+            </div>
+        <div class="modal-header">
+        <h3>Photo Gallery</h3>
+        </div>
+        <div class="modal-gallery">
+        </div>
+			<hr>
+        	<div id="add-div">
+           	 <button type="button" id="add-button">Add a Photo</button>
+        	</div>
+    </div>
+
+    <div class="modal-2">
+		    <div id="exit-modal2">
+				<button type="button" id="back-button"><img src="assets/icons/arrow_back.svg" alt="return to modal gallery"></button>
+            	<button type="button" id="exit-button2"><img src="assets/icons/close_icon.svg" alt="close modal"></button>
+            </div>
+        	<div class="modal-header">
+        		<h3>Add Photo</h3>
+        	</div>
+			<div id="add-photo">
+				<form action="#" method="post" id="photo-form">
+					<div id="photo-container">
+						<div>
+							<img src="assets/icons/add_photo_icon.svg" id="photo-icon" alt="add photo icon">
+						</div>
+	
+						<div>
+							<label for="add-file" id="file-label">+ Add Photo</label>
+							<input type="file" id="add-file" name="add-file" accept=".png, .jpg, .jpeg">
+						</div>
+						<img id="preview-image" src="" alt="Image preview">
+					</div>
+
+					<div>
+						<label for="title-input" class="photo-info">Title</label>
+						<input type="text" id="title-input" name="title-input">
+						<label for="category-select" class="photo-info">Category</label>
+						<select id="category-select">
+							<option value="">-- Choose Category --</option>
+						</select>
+					</div>
+					<hr>
+					<div>
+					<button type="submit" id="submit-photo">Confirm</button>
+					</div>
+				</form>
+			</div>
+    </div>
+	</dialog>
+		<!---->
 		<div class="filters">
 			<button type="button" id="b-All">All</button>
 			<button type="button" id="b-Obj">Objects</button>

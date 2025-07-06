@@ -52,18 +52,21 @@ loginForm.addEventListener('submit', e =>{
                 setError(loginPassword, 'Invalid email or password');
                 console.log('Login Failed');
 				alert(`Error: ${data.message}`)
+				e.preventDefault();
             }else{
 				//if the token is valid/exists then the user will be logged in and will store the token
 				console.log('Login Successful');
                 alert('Login successful! Welcome Admin!');
 				localStorage.setItem('login-token', data.token);
 				window.location.href = 'index.html';
+				return
                 }
             }).catch(error =>{
 				//this error is related to if the fetch fails to send the values to the backend
                 console.error('Error:', error);
                 setError(loginEmail, 'An error has occured please try again!');
                 setError(loginPassword, 'An error has occurred please try again!');
+				e.preventDefault();
             });
         };
         sendLogin();
