@@ -365,7 +365,6 @@ li:hover {
 	}
 }*/
 
-
 #modal-window::backdrop{
 	background-color: grey;
 	opacity: 0.4;

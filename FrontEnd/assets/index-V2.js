@@ -401,13 +401,13 @@ addFile.addEventListener('change', () =>{
   const preview = document.getElementById('preview-image');
 
   if (file && file.type.startsWith('image/')){
-    const reader = new FileReader(); 
+    const reader = new FileReader(); //this JS object reads the file being uploaded by the user, and converts them into usable formats for JS
     reader.onload = (ev) =>{
       preview.src = ev.target.result;
       preview.style.display = 'block';
       console.log(reader);
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); //reads the file as a base64-econcoded string
   }else{
     preview.src = '';
     preview.style.display = 'none';
