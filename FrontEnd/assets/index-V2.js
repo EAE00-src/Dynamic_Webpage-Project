@@ -96,6 +96,7 @@ async function getCateg(){
 };
 
 //function for populating the gallery with jobs from Backend
+//This function also contains the Delete button functionality and DELETE requests
 async function populateGallery(){
   //storing the retrieved data from getWorks inside of works
   const works = await getWorks();
@@ -395,7 +396,7 @@ photoForm.addEventListener('change', (eve) => {
     submitWorkBtn.classList.remove('confirm'); // Optional: remove class if incomplete
   }
 });
-//previews the image that the user is attempting to upload
+//This event listener previews the image that the user is attempting to upload
 addFile.addEventListener('change', () =>{
   const file = addFile.files[0];
   const preview = document.getElementById('preview-image');
